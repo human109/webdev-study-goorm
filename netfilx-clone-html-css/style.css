@@ -1,0 +1,218 @@
+
+/* xaxis noscroll  */
+html {
+    overflow-x: hidden;
+}
+html, body {
+    height: 100%;
+    margin:0;
+    padding: 0;
+    background-color:#141414;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('./img/bg.jpg') no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}   
+.container .header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.container .header img {
+    height: 40px;
+}
+.navbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+.container .header .nav-links {
+    display: flex;
+    gap: 20px;
+}
+.container .header .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+.container .header .nav-links a:hover {
+    text-decoration: underline;
+}
+.container .header .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.container .header .logo {
+    display: flex;
+
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 24px;
+}
+.container .header .user-menu img {
+    height: 30px;
+    border-radius: 50%;
+}
+.container .main-content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+/* Head Content */
+.container .main-content .banner {
+    width: 100%;
+    height: 500px;
+    background: url('./img/banner.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+
+}
+/* head-content Explation Style */
+.container .main-content .banner .explation {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
+    padding: 40px;
+    text-align: left;
+}
+.container .main-content .banner .explation h1 {
+    color: white;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.container .main-content .banner .explation p {
+    color: #ccc;
+    font-size: 18px;
+    max-width: 600px;
+}
+.container .main-content .banner .explation button {
+    padding: 10px 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.container .main-content .banner .explation button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s ease; 
+}
+
+.container .main-content .banner .explation button:focus {
+    outline: none;
+}
+/* content section */
+.container .main-content .content-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+}
+.container .main-content .content-section h2 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 0 40px;
+}
+.container .main-content .content-section .movie-list-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 40px;
+    /* scrollbar */
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+.container .main-content .content-section .movie-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+.container .main-content .content-section .movie-list .movie-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+.container .main-content .content-section .movie-list .movie-item {
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.container .main-content .content-section .movie-list .movie-item:hover {
+    transform: scale(1.05);
+}
+.container .main-content .content-section .movie-list .movie-item h3 {
+    color: white;
+    font-size: 18px;
+    margin: 10px;
+}
+.container .main-content .content-section .movie-list .movie-item p {
+    color: #ccc;
+    font-size: 14px;
+    margin: 0 10px 10px;
+}
+.container .main-content .content-section .movie-list .movie-item a {
+    text-decoration: none;
+    color: white;
+}
+.container .main-content .content-section .movie-list .movie-item a:hover {
+    text-decoration: underline;
+}
+.container .main-content .content-section .movie-list .movie-item a:focus {
+    outline: none;
+}
+.footer {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+}
