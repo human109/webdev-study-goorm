@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Todo-List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="todo-container">
+            <header>
+                <div class="header">
+                    <div class="logo-text">
+                        <h1>Todos 앱</h1>
+                    </div>
+                    <div class="add-todo">
+                        <button class="add-todo-button">
+                            새로운 Todo 추가하기
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="todo-list">
+                    <ul class="todo-items">
+                        <li class="todo-item">
+                            <input type="checkbox" class="todo-checkbox">
+                            <input type="text" class="todo-text readonly" value="할 일 1">
+                            <a href="#" class="edit-todo-button todo-actions">
+                                <glyphicon class="glyphicon glyphicon-pencil"></glyphicon>
+                            </a>
+                            <a href="#" class="delete-todo-button todo-actions">
+                                <glyphicon class="glyphicon glyphicon-minus"></glyphicon>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+            </div>
+        </div>
+    </body>
+</html>
