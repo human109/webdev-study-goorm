@@ -1,21 +1,31 @@
 document.querySelector('#btnAddTodo').addEventListener('click', handleAddTodo, false);
 
+// 편집 모드를 설정하는 함수
+function setTodoEditMode(todoTextElement) {
+    todoTextElement.setAttribute('contenteditable', 'true'); // 편집 가능하게 설정
+    todoTextElement.classList.add('edit-mode'); // 편집 상태 클래스 추가
+    todoTextElement.focus(); // 포커스 설정
+}
+
+// 읽기 전용 모드로 설정하는 함수
+function setTodoReadOnlyMode(todoTextElement) {
+    todoTextElement.setAttribute('contenteditable', 'false'); // 편집 불가능하게 설정
+    todoTextElement.classList.remove('edit-mode'); // 편집 상태 클래스 제거
+}
+
 function createTodoItem(text = '', completed = false) {
     const todoItem = document.querySelector('#example-todo-item').cloneNode(true);
     todoItem.removeAttribute('id'); // ID 제거
     todoItem.classList.remove('hidden'); // 숨김 클래스 제거
     todoItem.querySelector('.todo-text').value = text; // 텍스트 설정
+    const todoTextEl = todoItem.querySelector('.todo-text');
 
     // storage에 저장된 todo 항목의 경우, 읽기 전용으로 설정
     if( text.trim() !== '') {
-        todoItem.querySelector('.todo-text').setAttribute('readonly', 'true'); // 텍스트가 있을 경우 읽기 전용으로 설정
-        todoItem.querySelector('.todo-text').setAttribute('contenteditable', 'false'); // 편집 불가능하게 설정
-        todoItem.querySelector('.todo-text').classList.remove('edit-mode'); // 편집 상태 클래스 제거
+        setTodoReadOnlyMode(todoTextEl); // 텍스트가 있는 경우 읽기 전용 모드로 설정
     } else {
-        todoItem.querySelector('.todo-text').removeAttribute('readonly'); // 텍스트가 없을 경우 읽기 전용 속성 제거
-        todoItem.querySelector('.todo-text').setAttribute('contenteditable', 'true'); // 편집 가능하게 설정
-        todoItem.querySelector('.todo-text').classList.add('edit-mode'); // 편집 상태 클래스 추가
-        todoItem.querySelector('.todo-text').focus(); // 텍스트 입력 필드에 포커스 설정
+        setTodoEditMode(todoTextEl); // 텍스트가 없는 경우 편집 모드로 설정
+        todoTextEl.setAttribute('placeholder', '할 일을 입력하세요'); // 플레이스홀더 설정
     }
 
     todoItem.querySelector('.delete-todo-button').addEventListener('click', handleDeleteTodo, false); // 삭제 버튼 이벤트 리스너 추가
@@ -38,14 +48,10 @@ function handleAddTodo() {
 function handleEditTodo(event) {
     // 편집 버튼이 클릭된 todo 항목을 찾아서 편집 가능하게 설정
     const todoItem = event.target.closest('.todo-item');
-    if (todoItem) {
+    if (todoItem && !todoItem.classList.contains('completed')) {
         // complete 상태가 아닌 경우만 편집 가능하도록 설정
-        if (todoItem.classList.contains('completed')) return;
         const todoText = todoItem.querySelector('.todo-text');
-        todoText.setAttribute('contenteditable', 'true'); // 편집 가능하게 설정
-        todoText.removeAttribute('readonly'); // 읽기 전용 속성 제거
-        todoText.focus(); // 포커스 설정
-        todoText.classList.add('edit-mode'); // 편집 상태 클래스 추가
+        setTodoEditMode(todoText); // 편집 모드로 전환
     }
 }
 
@@ -65,10 +71,7 @@ function handleTodoInputBlur(event) {
     if (event.target.classList.contains('todo-text')) {
         todoText = event.target.value;
         if (todoText.trim() !== '') {    
-            event.target.classList.remove('edit-mode'); // 편집 상태 클래스 제거
-            event.target.setAttribute('readonly', 'true'); // 읽기 전용으로 설정
-            event.target.setAttribute('contenteditable', 'false'); // 편집 불가능하게 설정
-
+            setTodoReadOnlyMode(event.target); // 편집 모드 종료
             saveTodoListToLocalStorage(); // todoList를 localStorage에 저장
         }
     }
