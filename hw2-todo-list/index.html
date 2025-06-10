@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
@@ -17,7 +16,7 @@
                         <h1>Todos 앱</h1>
                     </div>
                     <div class="add-todo">
-                        <button class="add-todo-button">
+                        <button id="btnAddTodo" class="add-todo-button">
                             새로운 Todo 추가하기
                         </button>
                     </div>
@@ -25,10 +24,12 @@
             </header>
             <main>
                 <div class="todo-list">
-                    <ul class="todo-items">
-                        <li class="todo-item">
+                    <ul id="todo-items" class="todo-items">
+                        <!-- Example Todo Item -->
+                        <li id="example-todo-item" class="todo-item hidden">
                             <input type="checkbox" class="todo-checkbox">
-                            <input type="text" class="todo-text readonly" value="할 일 1">
+                            <input type="text" id="inputTodoText" class="todo-text edit-mode" value="" contenteditable="true">
+                            <!-- <span class="todo-text">할 일 1</span>      -->
                             <a href="#" class="edit-todo-button todo-actions">
                                 <glyphicon class="glyphicon glyphicon-pencil"></glyphicon>
                             </a>
@@ -42,4 +43,6 @@
             </div>
         </div>
     </body>
+    <script src="script.js"></script>
+
 </html>
